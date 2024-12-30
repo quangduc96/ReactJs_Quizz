@@ -3,9 +3,11 @@ import logo from "../../assets/logo.png";
 import { faEnvelope, faPhoneAlt, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="flex flex-col p-4 bg-white-500 text-black border-t border-grey-500">
-      <div className="flex">
+      <div className="flex mb-4">
         <div className="flex flex-col w-1/2 ">
           <div className="flex ">
             <p className="brand inline-block text-2xl justify-start items-center">
@@ -52,11 +54,10 @@ function Footer() {
               </li>
             </ul>
           </div>
-
         </div>
       </div>
-      <div className="flex justify-center items-center border-t border-grey-300">
-        <p className="text-right">&copy; Duc Nguyen 2024</p>
+      <div className="flex justify-center items-center border-t border-grey-300 p-4">
+        <p className="text-right">&copy; Duc Nguyen {currentYear}</p>
       </div>
     </footer>
   );

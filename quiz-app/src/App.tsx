@@ -6,6 +6,11 @@ import CustomerLayout from './shared/layouts/CustomerLayout';
 import { AuthProvider } from './contexts/auth.context';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AdminDashboard from './pages/management/AdminDashboard';
+import AnonymousRoute from './shared/components/AnonymousRoute';
+import AnonymousLayout from './shared/layouts/AnonymousLayout';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import ManagementLayout from './shared/layouts/ManagementLayout';
 
 function App() {
   return (
@@ -17,20 +22,19 @@ function App() {
             <Route path="/" element={<CustomerLayout><Home /></CustomerLayout>} />
             <Route path="/about" element={<CustomerLayout><About /></CustomerLayout>} />
             <Route path="/contact" element={<CustomerLayout><Contact /></CustomerLayout>} />
-            <Route path="/management/dashboard" element={<CustomerLayout><AdminDashboard /></CustomerLayout>} />
 
             {/* Admin Router */}
-            {/* <Route element={<PrivateRoute />}>
-              <Route path="/manager/dashboard" element={<ManagerLayout><AdminDashboard /></ManagerLayout>} />
-              <Route path="/manager/amenities" element={<ManagerLayout><AmenityList /></ManagerLayout>} />
-              <Route path="/manager/rooms" element={<ManagerLayout><RoomList /></ManagerLayout>} />
-            </Route> */}
+            <Route >
+              <Route path="/management/dashboard" element={<ManagementLayout><AdminDashboard /></ManagementLayout>} />
+              {/* <Route path="/manager/amenities" element={<ManagementLayout><AmenityList /></ManagementLayout>} />
+              <Route path="/manager/rooms" element={<ManagementLayout><RoomList /></ManagementLayout>} /> */}
+            </Route>
 
             {/* Auth Router */}
-            {/* <Route element={<AnonymousRoute />}>
+            <Route element={<AnonymousRoute />}>
               <Route path="/auth/login" element={<AnonymousLayout><Login /></AnonymousLayout>} />
               <Route path="/auth/register" element={<AnonymousLayout><Register /></AnonymousLayout>} />
-            </Route> */}
+            </Route>
           </Routes>
 
         </div>
