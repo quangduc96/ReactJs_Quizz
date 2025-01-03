@@ -1,8 +1,8 @@
-import ava2 from "../../assets/map.jpeg";
-import ava7 from "../../assets/inventions.png";
-import ava9 from "../../assets/capitals.jpeg";
+import ava2 from "../assets/map.jpeg";
+import ava7 from "../assets/inventions.png";
+import ava9 from "../assets/capitals.jpeg";
 
-function AdminDashboard() {
+function Quizzes() {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         // searchData();
@@ -92,4 +92,4 @@ function AdminDashboard() {
     );
 }
 
-export default AdminDashboard;
+export default Quizzes;

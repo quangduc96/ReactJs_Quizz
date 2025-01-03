@@ -12,8 +12,7 @@ const Login = () => {
         username: '',
         password: '',
         confirmPassword: '',
-        phoneNumber: '',
-        dateOfBirth: ''
+        phoneNumber: ''
     }
 
     const validationSchema = Yup.object({
@@ -28,12 +27,12 @@ const Login = () => {
             .max(50, 'Email must be at most 50 characters'),
         username: Yup.string().required('Username is required'),
         password: Yup.string().required('Password is required')
-            .min(6, 'Password must be at least 6 characters')
-            .max(20, 'Password must be at most 20 characters'),
+            .min(8, 'Password must be at least 8 characters')
+            .max(20, 'Password must be at most 20 characters')
+            .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{8,}$/, 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one non-alphanumeric character'),
         confirmPassword: Yup.string().required('Confirm password is required')
             .oneOf([Yup.ref('password')], 'Passwords must match'),
-        phoneNumber: Yup.string().required('Phone number is required'),
-        dateOfBirth: Yup.date().required('Date of birth is required')
+        phoneNumber: Yup.string().required('Phone number is required')
     })
 
     const onSubmit = async (values: any) => {
@@ -78,9 +77,9 @@ const Login = () => {
                     <ErrorMessage name="username" component="div" className="text-red-500" />
                 </div>
                 <div className="form-group w-1/2">
-                    <label htmlFor="phonenumber" className='text-left block mb-2'>Phone Number</label>
-                    <Field type="text" name="phonenumber" className="form-control p-2 border border-slate-300 rounded-md w-full" />
-                    <ErrorMessage name="phonenumber" component="div" className="text-red-500" />
+                    <label htmlFor="phoneNumber" className='text-left block mb-2'>Phone Number</label>
+                    <Field type="text" name="phoneNumber" className="form-control p-2 border border-slate-300 rounded-md w-full" />
+                    <ErrorMessage name="phoneNumber" component="div" className="text-red-500" />
                 </div>
                 <div className="form-group w-full">
                     <label htmlFor="password" className='text-left block mb-2'>Password</label>
@@ -93,7 +92,7 @@ const Login = () => {
                     <ErrorMessage name="confirmPassword" component="div" className="text-red-500" />
                 </div>
                 <div className="form-group !w-full">
-                    <button onClick={gotoHome} className="p-2 px-4 bg-white hover:bg-blue-100 text-gray-700 rounded-md mr-1 w-60 border border-gray-300">Back to Home</button>
+                    <button type="button" onClick={gotoHome} className="p-2 px-4 bg-white hover:bg-blue-100 text-gray-700 rounded-md mr-1 w-60 border border-gray-300">Back to Home</button>
                     <button type="submit" className="p-2 px-4 bg-blue-500 hover:bg-blue-700 text-white rounded-md w-60 ml-1">Register</button>
                 </div>
                 <div className="form-group text-center !w-full">

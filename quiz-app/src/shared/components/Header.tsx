@@ -3,7 +3,7 @@ import { useAuth } from "../../contexts/auth.context";
 import logo from '../../assets/logo.png';
 
 function Header() {
-    const { isAuthenticated, logout } = useAuth();
+    const { isAuthenticated, logout, user } = useAuth();
 
     const onLogout = () => {
         logout();
@@ -16,7 +16,10 @@ function Header() {
                     <li className="nav-item">
                         <Link to="/" className="nav-link block p-4 hover:bg-blue-700">Home</Link>
                     </li><li className="nav-item">
-                        <Link to="/management/dashboard" className="nav-link block p-4 hover:bg-blue-700">Quizzes</Link>
+                        <Link to="/quizzes" className="nav-link block p-4 hover:bg-blue-700">Quizzes</Link>
+                    </li>                  
+                    <li className="nav-item">
+                        <Link to="/management/quizz" className="nav-link block p-4 hover:bg-blue-700">Management</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/about" className="nav-link block p-4 hover:bg-blue-700">About</Link>
@@ -30,7 +33,7 @@ function Header() {
                 {isAuthenticated ? (
                     <ul className="nav-menu flex justify-center">
                         <li className="nav-item">
-                            <Link to="/auth/profile" className="nav-link block p-4 hover:bg-blue-700">Welcome, Admin</Link>
+                            <Link to="/auth/profile" className="nav-link block p-4 hover:bg-blue-700">Welcome, {user.firstName}</Link>
                         </li>
                         <li className="nav-item">
                             <button onClick={onLogout} className="nav-link block p-4 hover:bg-blue-700">Logout</button>

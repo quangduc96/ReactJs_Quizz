@@ -10,7 +10,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     const gotoQuizzes = () => {
-        navigate("/management/dashboard");
+        navigate("/quizzes");
     };
 
     return (

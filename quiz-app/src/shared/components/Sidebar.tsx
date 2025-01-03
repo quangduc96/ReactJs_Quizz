@@ -9,19 +9,19 @@ function Sidebar() {
                 <div className="sidebar-title text-2xl font-semibold p-3 border border-gray-300">Menu</div>
                 <ul>
                     <li>
-                        <Link className="block p-3 hover:bg-blue-700 hover:text-white border border-gray-300" to="/management/dashboard">
-                            <FontAwesomeIcon icon={faPersonCircleQuestion} /> Quick Management</Link>
+                        <Link className="block p-3 hover:bg-blue-700 hover:text-white border border-gray-300" to="/management/quizz">
+                            <FontAwesomeIcon icon={faPersonCircleQuestion} /> Quizz Management</Link>
                     </li>
                     <li>
-                        <Link className="block p-3 hover:bg-blue-700 hover:text-white border border-gray-300" to="/management/dashboard">
+                        <Link className="block p-3 hover:bg-blue-700 hover:text-white border border-gray-300" to="/management/question">
                             <FontAwesomeIcon icon={faQuestion} /> Question Management</Link>
                     </li>
                     <li>
-                        <Link className="block p-3 hover:bg-blue-700 hover:text-white border border-gray-300" to="/management/dashboard">
+                        <Link className="block p-3 hover:bg-blue-700 hover:text-white border border-gray-300" to="/management/user">
                             <FontAwesomeIcon icon={faUser} /> User Management</Link>
                     </li>
                     <li>
-                        <Link className="block p-3 hover:bg-blue-700 hover:text-white border border-gray-300" to="/management/dashboard">
+                        <Link className="block p-3 hover:bg-blue-700 hover:text-white border border-gray-300" to="/management/role">
                             <FontAwesomeIcon icon={faUserShield} /> Role Management</Link>
                     </li>
                 </ul>

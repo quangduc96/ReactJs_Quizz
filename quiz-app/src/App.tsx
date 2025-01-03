@@ -5,12 +5,17 @@ import Contact from './pages/Contact';
 import CustomerLayout from './shared/layouts/CustomerLayout';
 import { AuthProvider } from './contexts/auth.context';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AdminDashboard from './pages/management/AdminDashboard';
+import Quizzes from './pages/Quizzes';
 import AnonymousRoute from './shared/components/AnonymousRoute';
 import AnonymousLayout from './shared/layouts/AnonymousLayout';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import ManagementLayout from './shared/layouts/ManagementLayout';
+import PrivateRoute from './shared/components/PrivateRoute';
+import QuestionList from './pages/management/question/QuestionList';
+import QuizzList from './pages/management/quizz/QuizzList';
+import UserList from './pages/management/user/UserList';
+import RoleList from './pages/management/role/RoleList';
 
 function App() {
   return (
@@ -22,12 +27,14 @@ function App() {
             <Route path="/" element={<CustomerLayout><Home /></CustomerLayout>} />
             <Route path="/about" element={<CustomerLayout><About /></CustomerLayout>} />
             <Route path="/contact" element={<CustomerLayout><Contact /></CustomerLayout>} />
+            <Route path="/quizzes" element={<CustomerLayout><Quizzes /></CustomerLayout>} />
 
             {/* Admin Router */}
-            <Route >
-              <Route path="/management/dashboard" element={<ManagementLayout><AdminDashboard /></ManagementLayout>} />
-              {/* <Route path="/manager/amenities" element={<ManagementLayout><AmenityList /></ManagementLayout>} />
-              <Route path="/manager/rooms" element={<ManagementLayout><RoomList /></ManagementLayout>} /> */}
+            <Route element={<PrivateRoute />}>
+              <Route path="/management/quizz" element={<ManagementLayout><QuizzList /></ManagementLayout>} />
+              <Route path="/management/question" element={<ManagementLayout><QuestionList /></ManagementLayout>} />
+              <Route path="/management/role" element={<ManagementLayout><RoleList /></ManagementLayout>} />
+              <Route path="/management/user" element={<ManagementLayout><UserList /></ManagementLayout>} />
             </Route>
 
             {/* Auth Router */}

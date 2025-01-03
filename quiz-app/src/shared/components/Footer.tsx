@@ -29,7 +29,7 @@ function Footer() {
                 <li className="nav-item">
                   <Link to="/" className="nav-link block">Home</Link>
                 </li><li className="nav-item">
-                  <Link to="/management/dashboard" className="nav-link block">Quizzes</Link>
+                  <Link to="/quizzes" className="nav-link block">Quizzes</Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/about" className="nav-link block">About</Link>

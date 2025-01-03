@@ -6,6 +6,13 @@ interface AuthContextType {
     login: (data: any) => void;
     logout: () => void;
     // Get user information
+    user: {
+
+        firstName: string;
+
+        // Add other user properties if needed
+
+    };
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -36,8 +43,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         localStorage.removeItem('userInformation');
     }
 
+    //const user = isAuthenticated ? JSON.parse(localStorage.getItem('userInformation') || '{}') : "Anonymous";
+    const user = { firstName : "Anonymous" };
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, login, logout, user }}>
             {children}
         </AuthContext.Provider>
     );
