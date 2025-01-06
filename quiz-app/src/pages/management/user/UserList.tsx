@@ -6,6 +6,7 @@ import TablePagination from "../../../core/components/TablePagination";
 import { UserService } from "../../../services/user.service";
 import { FilterModel } from "../../../models/filter.model";
 import { TableColumnModel } from "../../../models/table-column.model";
+import { useNavigate } from "react-router-dom";
 
 function UserList() {
     const [data, setData] = useState<any[]>([]);
@@ -17,6 +18,7 @@ function UserList() {
     const [orderBy, setOrderBy] = useState<string>('number');
     const [orderDirection, setOrderDirection] = useState<number>(0);
     const [pageInfo, setPageInfo] = useState<any>({});
+    const navigate = useNavigate();
 
     const [columns] = useState<TableColumnModel[]>([
         { field: 'firstName', label: 'First Name', iconASC: faSortAlphaAsc, iconDESC: faSortAlphaDesc, isEnum: false, enum: null, sortabled: true },
@@ -37,17 +39,23 @@ function UserList() {
             //     orderBy: orderBy,
             //     orderDirection: orderDirection
             // };
- 
+
             // if (keyword) {
             //     Object.assign(filter, { number: keyword });
             // }
 
             // const response: any = await UserService.search(filter);
             const response: any = await UserService.getAll();
-            setData(response);
+            if (response && response.status === 403) {
+                navigate("/403");
+            }
+            else {
+                setData(response.data);
+            }
+
             //setPageInfo(response.pageInfo);
-        } catch (error) {
-            console.error('Error:', error);
+        } catch (error: any) {
+            console.error("An unexpected error occurred.");
         }
     }, [page, size, orderBy, orderDirection, keyword]);
 

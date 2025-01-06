@@ -53,7 +53,7 @@ const Login = () => {
                     <ErrorMessage name="password" component="div" className="text-red-500" />
                 </div>
                 <div className="form-group">
-                    <button onClick={gotoHome} className="p-2 px-4 bg-white hover:bg-blue-100 text-gray-700 rounded-md mr-1 w-5/12 border border-gray-300">Back to Home</button>
+                    <button type ="button" onClick={gotoHome} className="p-2 px-4 bg-white hover:bg-blue-100 text-gray-700 rounded-md mr-1 w-5/12 border border-gray-300">Back to Home</button>
                     <button type="submit" className="p-2 px-4 bg-blue-500 hover:bg-blue-700 text-white rounded-md ml-1 w-5/12">Login</button>
                 </div>
                 <div className="form-group text-center">

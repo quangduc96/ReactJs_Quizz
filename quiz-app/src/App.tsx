@@ -16,10 +16,14 @@ import QuestionList from './pages/management/question/QuestionList';
 import QuizzList from './pages/management/quizz/QuizzList';
 import UserList from './pages/management/user/UserList';
 import RoleList from './pages/management/role/RoleList';
+import { ToastContainer, toast } from "react-toastify"; 
+import 'react-toastify/dist/ReactToastify.css';
+import Custom403Page from './shared/components/Custom403Page';
 
 function App() {
   return (
     <AuthProvider>
+      <ToastContainer />
       <BrowserRouter>
         <div className="main-content min-h-screen flex flex-col">
           <Routes>
@@ -35,6 +39,7 @@ function App() {
               <Route path="/management/question" element={<ManagementLayout><QuestionList /></ManagementLayout>} />
               <Route path="/management/role" element={<ManagementLayout><RoleList /></ManagementLayout>} />
               <Route path="/management/user" element={<ManagementLayout><UserList /></ManagementLayout>} />
+              <Route path="/403" element={<ManagementLayout><Custom403Page /></ManagementLayout>} />
             </Route>
 
             {/* Auth Router */}

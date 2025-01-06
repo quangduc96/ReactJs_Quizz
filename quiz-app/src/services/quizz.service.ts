@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import apiErrorModal from "../shared/components/ApiErrorModal";
 
 const api: AxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_URL + "quizzes",
@@ -16,8 +17,12 @@ const getAll = async () => {
   try {
     const response: any = await api.get("/");
     return response.data;
-  } catch (error) {
-    console.log("Error:", error);
+  } catch (error: any) {
+    if (error.response) {
+      apiErrorModal(error.response.status);
+    } else {
+      apiErrorModal("An unexpected error occurred.");
+    }
   }
 };
 

@@ -6,6 +6,7 @@ import TablePagination from "../../../core/components/TablePagination";
 import { RoleService } from "../../../services/role.service";
 import { FilterModel } from "../../../models/filter.model";
 import { TableColumnModel } from "../../../models/table-column.model";
+import { useNavigate } from "react-router-dom";
 
 function RoleList() {
     const [data, setData] = useState<any[]>([]);
@@ -17,6 +18,7 @@ function RoleList() {
     const [orderBy, setOrderBy] = useState<string>('number');
     const [orderDirection, setOrderDirection] = useState<number>(0);
     const [pageInfo, setPageInfo] = useState<any>({});
+    const navigate = useNavigate();
 
     const [columns] = useState<TableColumnModel[]>([
         { field: 'name', label: 'Name', iconASC: faSortAlphaAsc, iconDESC: faSortAlphaDesc, isEnum: false, enum: null, sortabled: true },
@@ -41,7 +43,12 @@ function RoleList() {
 
             // const response: any = await RoleService.search(filter);
             const response: any = await RoleService.getAll();
-            setData(response);
+            if (response && response.status === 403) {
+                navigate("/403");
+            }
+            else {
+                setData(response.data);
+            }
         } catch (error) {
             console.error('Error:', error);
         }

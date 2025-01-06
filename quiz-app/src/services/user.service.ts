@@ -15,9 +15,10 @@ api.interceptors.request.use((config) => {
 const getAll = async () => {
   try {
     const response: any = await api.get("/");
-    return response.data;
-  } catch (error) {
+    return response;
+  } catch (error: any) {
     console.log("Error:", error);
+    return error;
   }
 };
 
